@@ -19,6 +19,12 @@ class UserRepository(
         val requestBody = RequestBody.create(JSON_MEDIA_TYPE, jsonObject.toString())
         return apiRequest { api.userLogin(requestBody)}
     }
+
+    suspend fun UserSignup(nic : String , password: String):AuthResponse{
+        val jsonObject = loginJsonObject(nic , password)
+        val requestBody = RequestBody.create(JSON_MEDIA_TYPE, jsonObject.toString())
+        return apiRequest { api.userSignup(requestBody) }
+    }
     suspend fun saveUser(user: User)= db.getUserDao().upsert(user)
     fun getUser() = db.getUserDao().getUser()
 }

@@ -17,9 +17,11 @@ import retrofit2.http.Headers
 import retrofit2.http.POST
 
 interface MyApi {
-    @Headers("Content-Type: application/json") // Set the Content-Type header to JSON
-    @POST("login")
+    @POST("auth/login")
     suspend fun userLogin(@Body requestBody: RequestBody): Response<AuthResponse>
+
+    @POST("auth/register")
+    suspend fun userSignup(@Body requestBody: RequestBody): Response<AuthResponse>
 
     companion object{
         operator fun invoke(
@@ -31,7 +33,7 @@ interface MyApi {
 
             return  Retrofit.Builder()
                 .client(okkHttpClient)
-                .baseUrl("https://ticket-reservation-sliit-1e11f68f93ee.herokuapp.com/api/auth/")
+                .baseUrl("https://ticket-reservation-sliit-1e11f68f93ee.herokuapp.com/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(MyApi::class.java)
