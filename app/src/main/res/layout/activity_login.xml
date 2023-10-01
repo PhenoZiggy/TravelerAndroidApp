@@ -11,7 +11,7 @@
             type="com.example.traveler.uis.auth.AuthViewModel" />
     </data>
     <androidx.coordinatorlayout.widget.CoordinatorLayout
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/root_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -91,15 +91,16 @@
                     android:id="@+id/signupText"
                     android:textColor="@color/purple"
                     android:layout_marginBottom="20dp"/>
-                <ProgressBar
-                    android:visibility="invisible"
-                    android:id="@+id/progress_bar"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    >
-                </ProgressBar>
+
             </LinearLayout>
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:visibility="invisible"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+            </ProgressBar>
         </androidx.cardview.widget.CardView>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

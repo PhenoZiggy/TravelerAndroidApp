@@ -1,6 +1,8 @@
 package com.example.traveler.data.network
 
 import com.example.traveler.data.network.responses.AuthResponse
+import com.example.traveler.data.network.responses.NetworkConnectionInterceptor
+import okhttp3.OkHttpClient
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import org.kodein.di.android.BuildConfig
@@ -20,8 +22,15 @@ interface MyApi {
     suspend fun userLogin(@Body requestBody: RequestBody): Response<AuthResponse>
 
     companion object{
-        operator fun invoke() : MyApi{
+        operator fun invoke(
+            networkConnectionInterceptor: NetworkConnectionInterceptor
+        ) : MyApi{
+            val okkHttpClient = OkHttpClient.Builder()
+                .addInterceptor(networkConnectionInterceptor)
+                .build()
+
             return  Retrofit.Builder()
+                .client(okkHttpClient)
                 .baseUrl("https://ticket-reservation-sliit-1e11f68f93ee.herokuapp.com/api/auth/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()

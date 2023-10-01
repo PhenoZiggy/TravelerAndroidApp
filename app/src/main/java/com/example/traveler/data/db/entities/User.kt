@@ -9,8 +9,8 @@ const val CURRENT_USER_ID = 0
 data class User(
     var id : Int? = null,
     var nic : String? = null,
-    var isActive : Boolean = false,
-    var isAdmin : Boolean = false,
+    var isActive : Boolean? = null,
+    var isAdmin : Boolean? = null,
     var lastLogin : String? = null,
     var message : String? = null
 ){
