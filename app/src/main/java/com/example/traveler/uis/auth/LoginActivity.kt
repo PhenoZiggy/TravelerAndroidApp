@@ -2,7 +2,6 @@ package com.example.traveler.uis.auth
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.ProgressBar
 import androidx.activity.ComponentActivity
 import androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -10,30 +9,26 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.traveler.R
-import com.example.traveler.data.db.AppDatabase
-import com.example.traveler.data.network.MyApi
 import com.example.traveler.data.network.responses.AuthResponse
-import com.example.traveler.data.network.responses.NetworkConnectionInterceptor
-import com.example.traveler.data.repositories.UserRepository
 import com.example.traveler.databinding.ActivityLoginBinding
 import com.example.traveler.uis.home.HomeActivity
 import com.example.traveler.util.hide
 import com.example.traveler.util.show
 import com.example.traveler.util.snackbar
-import com.example.traveler.util.toast
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.kodein
+import org.kodein.di.generic.instance
 
 
-class MainActivity : ComponentActivity(),AuthListener {
+class MainActivity : ComponentActivity(),AuthListener,KodeinAware {
+    override val kodein by kodein()
+    private val factory :AuthViewModelFactory by instance()
+
     private lateinit var rootLayout: CoordinatorLayout
     private lateinit var progressBar: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val networkConnectionInterceptor  = NetworkConnectionInterceptor(this)
-        val api = MyApi(networkConnectionInterceptor)
-        val db = AppDatabase(this)
-        val repository = UserRepository(api , db)
-        val factory = AuthViewModelFactory(repository)
 
         val bindingAuth : ActivityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login)
         val viewModel = ViewModelProvider(this, factory).get(AuthViewModel::class.java)
@@ -55,14 +50,11 @@ class MainActivity : ComponentActivity(),AuthListener {
         rootLayout = findViewById(R.id.root_layout)
         progressBar = findViewById(R.id.progress_bar)
 
-
-
     }
 
     override fun onStarted() {
         progressBar.show()
     }
-
     override fun onSuccess(user: AuthResponse?) {
         progressBar.hide()
        rootLayout.snackbar("${user?.nic} is Logged in")
