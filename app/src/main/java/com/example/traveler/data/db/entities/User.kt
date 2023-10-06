@@ -12,7 +12,8 @@ data class User(
     var isActive : Boolean? = null,
     var isAdmin : Boolean? = null,
     var lastLogin : String? = null,
-    var message : String? = null
+    var message : String? = null,
+    var name : String? = null
 ){
     @PrimaryKey(autoGenerate = false)
     var uid: Int = CURRENT_USER_ID
