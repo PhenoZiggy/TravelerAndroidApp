@@ -15,6 +15,8 @@ import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.Headers
 import retrofit2.http.POST
+import retrofit2.http.PUT
+import retrofit2.http.Path
 
 interface MyApi {
     @POST("auth/login")
@@ -22,6 +24,9 @@ interface MyApi {
 
     @POST("auth/register")
     suspend fun userSignup(@Body requestBody: RequestBody): Response<AuthResponse>
+
+    @PUT("user/{nic}")
+    suspend fun userUpdate(@Path("nic") nic: String, @Body requestBody: RequestBody): Response<AuthResponse>
 
     companion object{
         operator fun invoke(

@@ -10,5 +10,7 @@ data class AuthResponse(
     val isActive: Boolean?,
     val isAdmin: Boolean?,
     val lastLogin: String?,
-    val message: String?
+    val message: String?,
+    val name: String?,
+    val age : Int,
 )

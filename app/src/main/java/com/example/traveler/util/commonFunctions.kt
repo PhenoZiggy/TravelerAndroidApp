@@ -10,4 +10,11 @@ fun loginJsonObject(email : String , password : String): JSONObject {
     return jsonObject
 }
 
+fun updateProfileObject(name : String , age : Int): JSONObject {
+    val jsonObject = JSONObject()
+    jsonObject.put("name", name)
+    jsonObject.put("age", age)
+    return jsonObject
+}
+
 val JSON_MEDIA_TYPE = MediaType.get("application/json")
