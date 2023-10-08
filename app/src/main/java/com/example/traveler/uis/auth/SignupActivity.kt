@@ -1,7 +1,6 @@
 package com.example.traveler.uis.auth
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ProgressBar
 import androidx.activity.ComponentActivity
@@ -11,7 +10,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.traveler.R
 import com.example.traveler.data.db.entities.User
-import com.example.traveler.data.network.responses.AuthResponse
 import com.example.traveler.databinding.ActivitySignupBinding
 import com.example.traveler.uis.home.HomeActivity
 import com.example.traveler.util.hide

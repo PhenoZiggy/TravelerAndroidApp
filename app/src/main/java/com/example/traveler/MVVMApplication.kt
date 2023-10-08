@@ -5,8 +5,10 @@ import com.example.traveler.data.db.AppDatabase
 import com.example.traveler.data.network.MyApi
 import com.example.traveler.data.network.responses.NetworkConnectionInterceptor
 import com.example.traveler.data.repositories.UserRepository
+import com.example.traveler.uis.activate.ActivateViewModel
 import com.example.traveler.uis.auth.AuthViewModel
 import com.example.traveler.uis.auth.AuthViewModelFactory
+import com.example.traveler.uis.home.profile.ActivateViewModelFactory
 import com.example.traveler.uis.home.profile.ProfileViewModelFactory
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
@@ -27,6 +29,7 @@ class MVVMApplication : Application(),KodeinAware {
         bind() from singleton { UserRepository(instance(), instance()) }
         bind() from provider { AuthViewModelFactory(instance()) }
         bind() from provider { ProfileViewModelFactory(instance()) }
+        bind() from provider { ActivateViewModelFactory(instance()) }
     }
 
 

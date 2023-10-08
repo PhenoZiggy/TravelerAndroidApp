@@ -12,6 +12,7 @@ import com.example.traveler.R
 import com.example.traveler.data.db.entities.User
 import com.example.traveler.data.network.responses.AuthResponse
 import com.example.traveler.databinding.ActivityLoginBinding
+import com.example.traveler.uis.activate.ActivateActivity
 import com.example.traveler.uis.home.HomeActivity
 import com.example.traveler.util.hide
 import com.example.traveler.util.show
@@ -38,7 +39,7 @@ class MainActivity : ComponentActivity(),AuthListener,KodeinAware {
 
         viewModel.getLoggedUser().observe(this, Observer { user->
             if(user != null){
-                Intent(this,HomeActivity::class.java).also {
+                Intent(this,ActivateActivity::class.java).also {
                     // need to start as a fresh activity
                     //if user press back button user can see the login again
                     it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
