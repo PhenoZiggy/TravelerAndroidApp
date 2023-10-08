@@ -46,21 +46,21 @@ class ProfileViewModel(
         Coroutines.main {
             try {
                 val authResponse = repository?.UserUpdate(name!!, age!!.toInt(),nic!!)
-                authResponse.let {
+                authResponse?.let {
                     val user = User(
-                        id = it?.id,
-                        nic = it?.nic,
-                        isActive = it?.isActive,
-                        isAdmin = it?.isAdmin,
-                        lastLogin = it?.lastLogin,
-                        name = it?.name,
-                        age = it?.age
+                        id = it?.data?.id,
+                        nic = it?.data?.nic,
+                        isActive = it?.data?.isActive,
+                        isAdmin = it?.data?.isAdmin,
+                        lastLogin = it?.data?.lastLogin,
+                        name = it?.data?.name,
+                        age = it?.data?.age
                     )
-                    authListener?.onSuccess(it)
+                    authListener?.onSuccess(it.data)
                     repository.saveUser(user)
                     return@main
                 }
-                authListener?.onFailure(authResponse.toString())
+                authListener?.onFailure(authResponse?.message.toString())
             }catch (e : ApiException){
                 authListener?.onFailure(e.message!!)
             }catch (e : NoInternetException){

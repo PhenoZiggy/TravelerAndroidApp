@@ -12,6 +12,7 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.databinding.DataBindingUtil
 import androidx.viewbinding.ViewBindings
 import com.example.traveler.R
+import com.example.traveler.data.db.entities.User
 import com.example.traveler.data.network.responses.AuthResponse
 import com.example.traveler.databinding.FragmentProfileBinding
 import com.example.traveler.uis.auth.AuthListener
@@ -49,7 +50,7 @@ class ProfileFragment : Fragment() ,KodeinAware, AuthListener {
         progressBar.show()
     }
 
-    override fun onSuccess(user: AuthResponse?) {
+    override fun onSuccess(user: User?) {
         progressBar.hide()
         rootLayout.snackbar("${user?.nic} Updated!")
     }

@@ -27,14 +27,10 @@ class AuthViewModel(
             authListener?.onFailure("NIC and Password cannot be empty")
             return
         }
-        // success input
-//        val loginResponse = UserRepository().UserLogin(email!! , password!!)
-//        authListener?.onSuccess(loginResponse)
         Coroutines.main {
             try {
                 val authResponse = repository.UserLogin(nic!! , password!!)
-
-                authResponse.let {
+                authResponse.data?.let {
                     val user = User(
                         id = it.id,
                         nic = it.nic,
@@ -46,9 +42,7 @@ class AuthViewModel(
                     repository.saveUser(user)
                     return@main
                 }
-
-
-                authListener?.onFailure(authResponse.toString())
+                authListener?.onFailure(authResponse?.message.toString())
             }catch (e : ApiException){
                 authListener?.onFailure(e.message!!)
             }catch (e : NoInternetException){
@@ -87,28 +81,22 @@ class AuthViewModel(
             authListener?.onFailure("Confirm password did not match")
             return
         }
-        // success input
-//        val loginResponse = UserRepository().UserLogin(email!! , password!!)
-//        authListener?.onSuccess(loginResponse)
         Coroutines.main {
             try {
                 val authResponse = repository.UserSignup(nic!! , password!!)
-
                 authResponse.let {
                     val user = User(
-                        id = it.id,
-                        nic = it.nic,
-                        isActive = it.isActive,
-                        isAdmin = it.isAdmin,
-                        lastLogin = it.lastLogin
+                        id = it.data.id,
+                        nic = it.data.nic,
+                        isActive = it.data.isActive,
+                        isAdmin = it.data.isAdmin,
+                        lastLogin = it.data.lastLogin
                     )
-                    authListener?.onSuccess(it)
+                    authListener?.onSuccess(it.data)
                     repository.saveUser(user)
                     return@main
                 }
-
-
-                authListener?.onFailure(authResponse.toString())
+                authListener?.onFailure(authResponse.message.toString())
             }catch (e : ApiException){
                 authListener?.onFailure(e.message!!)
             }catch (e : NoInternetException){

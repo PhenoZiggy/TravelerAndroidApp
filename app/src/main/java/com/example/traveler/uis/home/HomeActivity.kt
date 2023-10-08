@@ -3,23 +3,16 @@ package com.example.traveler.uis.home
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
-import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.example.traveler.R
-import com.example.traveler.databinding.ActivityLoginBinding
-import com.example.traveler.uis.auth.AuthViewModel
-import com.example.traveler.uis.auth.AuthViewModelFactory
 import com.google.android.material.navigation.NavigationView
-import org.kodein.di.android.kodein
-import org.kodein.di.generic.instance
 
 class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+        setContentView(R.layout.activity_activate_account)
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         val nav_view = findViewById<NavigationView>(R.id.nav_view)

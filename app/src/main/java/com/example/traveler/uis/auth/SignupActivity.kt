@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.traveler.R
+import com.example.traveler.data.db.entities.User
 import com.example.traveler.data.network.responses.AuthResponse
 import com.example.traveler.databinding.ActivitySignupBinding
 import com.example.traveler.uis.home.HomeActivity
@@ -52,7 +53,7 @@ class SignupActivity : ComponentActivity(), AuthListener, KodeinAware {
     override fun onStarted() {
         progressBar.show()
     }
-    override fun onSuccess(user: AuthResponse?) {
+    override fun onSuccess(user: User?) {
         progressBar.hide()
         rootLayout.snackbar("${user?.nic} is Logged in")
     }
