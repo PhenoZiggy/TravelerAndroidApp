@@ -6,13 +6,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import com.example.traveler.R
+import com.example.traveler.util.Coroutines
+import com.example.traveler.util.toast
+import org.kodein.di.Kodein
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.x.kodein
+import org.kodein.di.generic.instance
 
-class TrainFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = TrainFragment()
-    }
+class TrainFragment : Fragment(), KodeinAware {
+    override val kodein by kodein()
+    private val factory : TrainViewModelFactory by instance()
 
     private lateinit var viewModel: TrainViewModel
 
@@ -25,8 +30,12 @@ class TrainFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(TrainViewModel::class.java)
-        // TODO: Use the ViewModel
+        viewModel = ViewModelProvider(this, factory).get(TrainViewModel::class.java)
+        Coroutines.main {
+           val trains =  viewModel.trains.await()
+            trains.observe(viewLifecycleOwner, Observer {
+                context?.toast(it.size.toString())
+            })
+        }
     }
-
 }

@@ -36,6 +36,26 @@ class ActivateViewModel(
             // Check if newUser is not null and has a nic value
             if (newUser != null) {
                 nic.postValue(newUser.nic)
+                if(newUser.name.isNullOrEmpty()){
+                    Coroutines.main {
+                        try {
+                            val res = repository.getUserByNic(newUser.nic!!)
+                            res.data?.let {
+                                val user = User(
+                                    id = it.id,
+                                    name = it.name,
+                                    age = it.age,
+                                    userGender = it.userGender,
+                                    userType = it.userType
+                                )
+                                repository.updateUser(user.id!!, user.name!! , user.age!!, user.userGender!!,user.userType!!)
+                                return@main
+                            }
+                        }catch(e:ApiException){
+
+                        }
+                    }
+                }
             }
         }
     }

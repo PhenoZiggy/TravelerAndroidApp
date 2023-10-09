@@ -40,6 +40,10 @@ class UserRepository(
         return apiRequest { api.createUser(requestBody) }
     }
 
+    suspend fun getUserByNic(nic: String) : AuthResponse{
+        return apiRequest { api.getUser(nic) }
+    }
+
 
     suspend fun saveUser(user: User)= db.getUserDao().upsert(user)
     suspend fun updateUser(id:String ,name: String , age: Int,gender: String,userType:String)= db.getUserDao().updateUserDetails(id ,name , age, gender , userType)

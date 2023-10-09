@@ -2,6 +2,7 @@ package com.example.traveler.data.network
 
 import com.example.traveler.data.network.responses.AuthResponse
 import com.example.traveler.data.network.responses.NetworkConnectionInterceptor
+import com.example.traveler.data.network.responses.TrainResponse
 import okhttp3.OkHttpClient
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
@@ -13,6 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.POST
 import retrofit2.http.PUT
@@ -24,12 +26,17 @@ interface MyApi {
 
     @POST("user")
     suspend fun createUser(@Body requestBody: RequestBody): Response<AuthResponse>
+    @GET("USER/{nic}")
+    suspend fun getUser(@Path("nic") nic: String) : Response<AuthResponse>
 
     @POST("auth/register")
     suspend fun userSignup(@Body requestBody: RequestBody): Response<AuthResponse>
 
     @PUT("user/{nic}")
     suspend fun userUpdate(@Path("nic") nic: String, @Body requestBody: RequestBody): Response<AuthResponse>
+
+    @GET("Train")
+    suspend fun getTrains() : Response<TrainResponse>
 
     companion object{
         operator fun invoke(

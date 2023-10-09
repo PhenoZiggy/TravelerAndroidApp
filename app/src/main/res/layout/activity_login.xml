@@ -35,7 +35,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Let's Explore The
+                    android:text="Let's Travel
                     Beautiful World"
                     android:textAlignment="center"
                     android:textSize="30sp"

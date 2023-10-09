@@ -6,6 +6,6 @@
         />
     <item
         android:title="Trains"
-        android:id="@+id/trainsFragment"
+        android:id="@+id/trainFragment"
         />
 </menu>

@@ -10,4 +10,9 @@
         android:name="com.example.traveler.uis.home.profile.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/trainFragment"
+        android:name="com.example.traveler.uis.home.trains.TrainFragment"
+        android:label="fragment_train"
+        tools:layout="@layout/fragment_train" />
 </navigation>
