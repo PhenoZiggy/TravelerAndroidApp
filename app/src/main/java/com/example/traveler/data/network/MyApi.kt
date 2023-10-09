@@ -22,6 +22,9 @@ interface MyApi {
     @POST("auth/login")
     suspend fun userLogin(@Body requestBody: RequestBody): Response<AuthResponse>
 
+    @POST("user")
+    suspend fun createUser(@Body requestBody: RequestBody): Response<AuthResponse>
+
     @POST("auth/register")
     suspend fun userSignup(@Body requestBody: RequestBody): Response<AuthResponse>
 

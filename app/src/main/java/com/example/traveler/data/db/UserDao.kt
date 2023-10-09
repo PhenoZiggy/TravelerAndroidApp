@@ -18,4 +18,7 @@ interface UserDao {
     @Query("SELECT * FROM user WHERE uid = ${CURRENT_USER_ID}")
     fun getUser():LiveData<User>
 
+    @Query("UPDATE user SET id= :id, name = :name, age = :age, userGender = :gender, userType= :userType WHERE uid = $CURRENT_USER_ID")
+    suspend fun updateUserDetails(id:String ,name: String, age: Int, gender: String , userType : String )
+
 }

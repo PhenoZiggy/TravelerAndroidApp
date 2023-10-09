@@ -52,7 +52,7 @@ class ProfileFragment : Fragment() ,KodeinAware, AuthListener {
 
     override fun onSuccess(user: User?) {
         progressBar.hide()
-        rootLayout.snackbar("${user?.nic} Updated!")
+        rootLayout.snackbar("${user?.name} Updated!")
     }
 
     override fun onFailure(message: String) {

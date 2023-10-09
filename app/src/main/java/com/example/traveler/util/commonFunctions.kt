@@ -10,10 +10,22 @@ fun loginJsonObject(email : String , password : String): JSONObject {
     return jsonObject
 }
 
-fun updateProfileObject(name : String , age : Int): JSONObject {
+fun updateProfileObject(name : String , age : Int , gender : String): JSONObject {
     val jsonObject = JSONObject()
     jsonObject.put("name", name)
     jsonObject.put("age", age)
+    jsonObject.put("userType", "Customer")
+    jsonObject.put("userGender", gender)
+    return jsonObject
+}
+
+fun createUser(name : String , age : Int , gender :String , nic :String): JSONObject {
+    val jsonObject = JSONObject()
+    jsonObject.put("name", name)
+    jsonObject.put("age", age)
+    jsonObject.put("nic", nic)
+    jsonObject.put("userType", "Customer")
+    jsonObject.put("userGender", gender)
     return jsonObject
 }
 

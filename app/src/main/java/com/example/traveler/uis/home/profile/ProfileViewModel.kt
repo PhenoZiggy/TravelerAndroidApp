@@ -24,6 +24,7 @@ class ProfileViewModel(
     var nic: String? = null
     var age: String? = null
     var name: String? = null
+    var gender: String? = null
 
     init {
         // Observe the user LiveData for changes
@@ -31,6 +32,7 @@ class ProfileViewModel(
             // Check if newUser is not null and has a nic value
             if (newUser != null) {
                 nic = newUser.nic
+                gender = newUser.userGender
             }
         }
     }
@@ -45,22 +47,20 @@ class ProfileViewModel(
 
         Coroutines.main {
             try {
-                val authResponse = repository?.UserUpdate(name!!, age!!.toInt(),nic!!)
-                authResponse?.let {
+                val userResponse = repository?.UserUpdate(name!!, age!!.toInt(),nic!!, gender!!)
+                userResponse?.data?.let {
                     val user = User(
-                        id = it?.data?.id,
-                        nic = it?.data?.nic,
-                        isActive = it?.data?.isActive,
-                        isAdmin = it?.data?.isAdmin,
-                        lastLogin = it?.data?.lastLogin,
-                        name = it?.data?.name,
-                        age = it?.data?.age
+                        id = it.id,
+                        name = it.name,
+                        age = it.age,
+                        userGender = it.userGender,
+                        userType = it.userType
                     )
-                    authListener?.onSuccess(it.data)
-                    repository.saveUser(user)
+                    authListener?.onSuccess(it)
+                    repository.updateUser(user.id!!, user.name!!, user.age!!,user.userGender!!,user.userType!!)
                     return@main
                 }
-                authListener?.onFailure(authResponse?.message.toString())
+                authListener?.onFailure(userResponse?.message.toString())
             }catch (e : ApiException){
                 authListener?.onFailure(e.message!!)
             }catch (e : NoInternetException){

@@ -10,133 +10,155 @@
             name="activate"
             type="com.example.traveler.uis.activate.ActivateViewModel" />
     </data>
-    <androidx.constraintlayout.widget.ConstraintLayout 
-        android:layout_width="match_parent"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_height="match_parent"
-        tools:context=".uis.activate.ActivateActivity">
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="200dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/top_background_a"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Activate Your \nAccount!"
-            android:textSize="30sp"
-            android:layout_marginStart="30sp"
-            android:layout_marginTop="20sp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <LinearLayout
+        android:layout_width="match_parent"
+        android:id="@+id/root_layout">
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="500dp"
-            android:orientation="vertical"
-            android:padding="32dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2">
+            android:layout_height="match_parent"
+            tools:context=".uis.activate.ActivateActivity">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/top_background_a"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/namelable"
-                android:layout_width="match_parent"
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name"
-                android:textColor="#000000"
+                android:text="Activate Your \nAccount!"
+                android:textSize="30sp"
+                android:layout_marginStart="30sp"
+                android:layout_marginTop="20sp"
                 android:textStyle="bold"
-                android:textSize="20dp"
-                />
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/name"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:ems="10"
-                android:textSize="18sp"
-                android:inputType="textPersonName"
-                android:textColor="#707070"
-                android:layout_marginTop="12dp"
-                android:padding="12dp"
-                android:hint="Insert your name"
-                android:background="@drawable/edit_text_background"
-                android:text="@={activate.name}"/>
-
-            <TextView
-                android:id="@+id/ageLabel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Age"
-                android:textColor="#000000"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                />
-
-            <EditText
-                android:id="@+id/age"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:ems="10"
-                android:textSize="18sp"
-                android:inputType="numberSigned"
-                android:textColor="#707070"
-                android:layout_marginTop="12dp"
-                android:padding="12dp"
-                android:text="@={activate.age}"
-                android:hint="Insert your Age"
-                android:background="@drawable/edit_text_background" />
-            <TextView
-                android:id="@+id/userTypeLabel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Gender"
-                android:textColor="#000000"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                />
-
-            <RadioGroup
-                android:id="@+id/genderGroup"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="500dp"
                 android:orientation="vertical"
-                >
-                <RadioButton
-                    android:id="@+id/radioMale"
+                android:padding="32dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView2">
+
+                <TextView
+                    android:id="@+id/yourid"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Male"
-                    android:value="Male"
+                    android:text="@={activate.nic}"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/namelable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Name"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
                     />
 
-                <RadioButton
-                    android:id="@+id/radioFemale"
+                <EditText
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:ems="10"
+                    android:textSize="18sp"
+                    android:inputType="textPersonName"
+                    android:textColor="#707070"
+                    android:layout_marginTop="12dp"
+                    android:padding="12dp"
+                    android:hint="Insert your name"
+                    android:background="@drawable/edit_text_background"
+                    android:text="@={activate.name}"/>
+
+                <TextView
+                    android:id="@+id/ageLabel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Female"
-                    android:value="Female"
+                    android:text="Age"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
                     />
-            </RadioGroup>
-            <Button
-                android:id="@+id/loginButton"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="30dp"
-                android:backgroundTint="@android:color/holo_green_light"
-                android:text="Activate Your Account"
-                android:textSize="18sp"
-                app:cornerRadius="20dp"
-                android:onClick="@{activate::onActivateButtonClick}"/>
-        </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <EditText
+                    android:id="@+id/age"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:ems="10"
+                    android:textSize="18sp"
+                    android:inputType="numberSigned"
+                    android:textColor="#707070"
+                    android:layout_marginTop="12dp"
+                    android:padding="12dp"
+                    android:text="@={activate.age}"
+                    android:hint="Insert your Age"
+                    android:background="@drawable/edit_text_background" />
+                <TextView
+                    android:id="@+id/userTypeLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Gender"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    />
+
+                <RadioGroup
+                    android:id="@+id/genderGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+                    <RadioButton
+                        android:id="@+id/radioMale"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Male"
+                        android:value="Male"
+                        />
+
+                    <RadioButton
+                        android:id="@+id/radioFemale"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Female"
+                        android:value="Female"
+                        />
+                </RadioGroup>
+                <Button
+                    android:id="@+id/loginButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="30dp"
+                    android:backgroundTint="@android:color/holo_green_light"
+                    android:text="Activate Your Account"
+                    android:textSize="18sp"
+                    app:cornerRadius="20dp"
+                    android:onClick="@{activate::onActivateButtonClick}"/>
+
+                <ProgressBar
+                    android:id="@+id/progress_bar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:forceHasOverlappingRendering="false"
+                    android:visibility="invisible"></ProgressBar>
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 </layout>
