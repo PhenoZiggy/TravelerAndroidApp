@@ -13,6 +13,11 @@
     <fragment
         android:id="@+id/trainFragment"
         android:name="com.example.traveler.uis.home.trains.TrainFragment"
-        android:label="fragment_train"
+        android:label="Trains"
         tools:layout="@layout/fragment_train" />
+    <fragment
+        android:id="@+id/reservationFragment2"
+        android:name="com.example.traveler.uis.home.reservations.ReservationFragment"
+        android:label="Reservations"
+        tools:layout="@layout/fragment_reservation" />
 </navigation>
