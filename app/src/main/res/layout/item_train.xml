@@ -13,65 +13,82 @@
         android:layout_height="wrap_content">
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="200dp"
+            android:layout_height="220dp"
             android:padding="1dp"
             android:background="@drawable/ticketbg">
 
-            <TextView
-                android:id="@+id/train"
-                android:layout_marginTop="30dp"
-                android:layout_marginLeft="90dp"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@{`'`+train.trainName+`'`}"
-                android:textAppearance="@style/Theme.AppCompat"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="70px"
-                tools:text="Title Of Train" />
-            <TextView
-                android:id="@+id/fromTo"
-                android:layout_marginTop="60dp"
-                android:layout_marginLeft="90dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@{`From ` + train.startStation + `To ` + train.endStation}"
-                android:textAppearance="@style/Theme.AppCompat"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="50px"
-                tools:text="From City to City" />
-            <TextView
-                android:id="@+id/startAndEndTime"
-                android:layout_marginTop="90dp"
-                android:layout_marginLeft="90dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@{`Starting at ` + train.startTime + `\nEnd At : ` + train.endTime}"
-                android:textAppearance="@style/Theme.AppCompat"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="50px"
-                tools:text="From City to City" />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/capacity"
-                android:layout_marginTop="120dp"
-                android:layout_marginLeft="90dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@{`Capacity :  ` + train.seats}"
-                android:textAppearance="@style/Theme.AppCompat"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="50px"
-                tools:text="From City to City" />
+                <TextView
+                    android:id="@+id/train"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="90dp"
+                    android:layout_marginTop="30dp"
+                    android:text="@{`'`+train.trainName+`'`}"
+                    android:textAppearance="@style/Theme.AppCompat"
+                    android:textColor="@color/black"
+                    android:textSize="70px"
+                    android:textStyle="bold"
+                    tools:text="Title Of Train" />
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Book Now"
-                android:visibility="gone"/>
+                <TextView
+                    android:id="@+id/fromTo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="90dp"
+                    android:layout_marginTop="0dp"
+                    android:text="@{`From ` + train.startStation + `To ` + train.endStation}"
+                    android:textAppearance="@style/Theme.AppCompat"
+                    android:textColor="@color/black"
+                    android:textSize="50px"
+                    android:textStyle="bold"
+                    tools:text="From City to City" />
+
+                <TextView
+                    android:id="@+id/startAndEndTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="90dp"
+                    android:layout_marginTop="0dp"
+                    android:text="@{`Starting at ` + train.startTime + `\nEnd At : ` + train.endTime}"
+                    android:textAppearance="@style/Theme.AppCompat"
+                    android:textColor="@color/black"
+                    android:textSize="50px"
+                    android:textStyle="bold"
+                    tools:text="From City to City" />
+
+                <TextView
+                    android:id="@+id/capacity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="90dp"
+                    android:layout_marginTop="0dp"
+                    android:text="@{`Capacity :  ` + train.seats}"
+                    android:textAppearance="@style/Theme.AppCompat"
+                    android:textColor="@color/black"
+                    android:textSize="50px"
+                    android:textStyle="bold"
+                    tools:text="From City to City" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="end">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="40dp"
+                        android:text="Book Now" />
+                </LinearLayout>
+
+            </LinearLayout>
+
         </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>
 
