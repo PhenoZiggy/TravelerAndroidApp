@@ -5,9 +5,16 @@
     android:layout_height="match_parent"
     tools:context=".uis.home.trains.TrainFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/recyclerView"
+    tools:listitem="@layout/item_train"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
+    <ProgressBar
+        android:visibility="invisible"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:id="@+id/progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 </FrameLayout>

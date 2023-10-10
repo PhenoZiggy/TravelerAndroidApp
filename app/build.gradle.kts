@@ -108,4 +108,8 @@ dependencies {
     //andorid nav archtcture
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.3")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.3")
+
+    implementation("com.xwray:groupie:2.3.0")
+    implementation("com.xwray:groupie-kotlin-android-extensions:2.3.0")
+    implementation("com.xwray:groupie-databinding:2.3.0")
 }
