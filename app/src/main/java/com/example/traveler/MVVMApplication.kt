@@ -34,8 +34,8 @@ class MVVMApplication : Application(),KodeinAware {
         bind() from provider { AuthViewModelFactory(instance()) }
         bind() from provider { ProfileViewModelFactory(instance()) }
         bind() from provider { ActivateViewModelFactory(instance()) }
-        bind() from provider { TrainViewModelFactory(instance()) }
-        bind() from provider { ReservationViewModelFactory(instance()) }
+        bind() from provider { TrainViewModelFactory(instance() , instance(), instance())  }
+        bind() from provider { ReservationViewModelFactory(instance() , instance()) }
     }
 
 

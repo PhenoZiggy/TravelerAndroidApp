@@ -41,7 +41,7 @@ class TrainFragment : Fragment(), KodeinAware {
 
     private fun bindUI() = Coroutines.main {
         viewModel.trains.await().observe(viewLifecycleOwner, Observer {
-            initRecyclerView(it.toTrainItem())
+            initRecyclerView(it.toTrainItem(viewModel))
         })
     }
 
@@ -56,10 +56,11 @@ class TrainFragment : Fragment(), KodeinAware {
         }
     }
 
-    private fun List<Train>.toTrainItem() : List<TrainItem>{
-        return this.map {
-            TrainItem(it)
+    private fun List<Train>.toTrainItem(viewModel: TrainViewModel): List<TrainItem> {
+        return this.map { train ->
+            TrainItem(train, viewModel)
         }
     }
+
 
 }

@@ -4,11 +4,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.traveler.data.db.AppDatabase
 import com.example.traveler.data.db.entities.Reservation
+import com.example.traveler.data.db.entities.ResevationWithTrainDetails
 import com.example.traveler.data.network.MyApi
 import com.example.traveler.data.network.responses.SafeApiRequest
 import com.example.traveler.util.Coroutines
+import com.example.traveler.util.JSON_MEDIA_TYPE
+import com.example.traveler.util.reserveObj
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import okhttp3.RequestBody
 
 class ReservationRepository (
     private val api : MyApi,
@@ -21,7 +25,22 @@ class ReservationRepository (
             saveReservations(it)
         }
     }
-    suspend fun getReservations(nic: String) : LiveData<List<Reservation>>{
+
+    //reserve a train by calling API function
+    suspend fun reserveAtrain(trainId: String, nic: String, seats: String) {
+        val jsonObject = reserveObj(trainId , nic , seats)
+        val requestBody = RequestBody.create(JSON_MEDIA_TYPE, jsonObject.toString())
+        try {
+            apiRequest { api.reservation(requestBody) }
+        }catch (e: Exception){
+
+        }
+                //val reservationsData = response.data
+                //reservations.postValue(reservationsData)
+    }
+
+    //get all reservations by calling API function
+    suspend fun getReservations(nic: String) : LiveData<List<ResevationWithTrainDetails>>{
         return withContext(Dispatchers.IO){
             fetchReservations(nic)
             db.getReservationDao().getReservations()

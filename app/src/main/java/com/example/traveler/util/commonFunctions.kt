@@ -29,4 +29,12 @@ fun createUser(name : String , age : Int , gender :String , nic :String): JSONOb
     return jsonObject
 }
 
+fun reserveObj(trainId : String , nic : String , seats : String): JSONObject {
+    val jsonObject = JSONObject()
+    jsonObject.put("trainId", trainId)
+    jsonObject.put("userNic", nic)
+    jsonObject.put("seats", seats.toInt())
+    return jsonObject
+}
+
 val JSON_MEDIA_TYPE = MediaType.get("application/json")

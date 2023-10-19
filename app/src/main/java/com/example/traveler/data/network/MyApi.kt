@@ -2,6 +2,7 @@ package com.example.traveler.data.network
 
 import com.example.traveler.data.network.responses.AuthResponse
 import com.example.traveler.data.network.responses.NetworkConnectionInterceptor
+import com.example.traveler.data.network.responses.OneReservationResponse
 import com.example.traveler.data.network.responses.ReservationResponse
 import com.example.traveler.data.network.responses.TrainResponse
 import okhttp3.OkHttpClient
@@ -33,8 +34,14 @@ interface MyApi {
     @GET("Train")
     suspend fun getTrains() : Response<TrainResponse>
 
+    //get all reservations
     @GET("Reservation/nic/{nic}")
     suspend fun getReservations(@Path("nic") nic: String) : Response<ReservationResponse>
+
+    // POST method for reserve a train
+    @POST("Reservation")
+    suspend fun reservation(@Body requestBody: RequestBody): Response<OneReservationResponse>
+
 
     companion object{
         operator fun invoke(
